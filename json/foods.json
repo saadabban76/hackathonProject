@@ -1,0 +1,72 @@
+[
+  {
+    "images": "/images/foods/f1.jpg",
+    "title": "Idli",
+    "price": "30"
+  },
+  {
+    "images": "/images/foods/f2.jpeg",
+    "title": "dosa",
+    "price": "70"
+  },
+  {
+    "images": "/images/foods/f3.jpg",
+    "title": "vada",
+    "price": "20"
+  },
+  {
+    "images": "/images/foods/f4.jpg",
+    "title": "jancia",
+    "price": "10"
+  },
+  {
+    "images": "/images/foods/f5.jpg",
+    "title": "KFC",
+    "price": "30"
+  },
+  {
+    "images": "/images/foods/f6.jpg",
+    "title": "Kabab",
+    "price": "10"
+  },
+  {
+    "images": "/images/foods/f7.jpg",
+    "title": "French Fries",
+    "price": "30"
+  },
+  {
+    "images": "/images/foods/f8.jpg",
+    "title": "Pizza",
+    "price": "50"
+  },
+  {
+    "images": "/images/foods/f8.jpg",
+    "title": "Pizza",
+    "price": "50"
+  },
+  {
+    "images": "/images/foods/f8.jpg",
+    "title": "Pizza",
+    "price": "50"
+  },
+  {
+    "images": "/images/foods/f8.jpg",
+    "title": "Pizza",
+    "price": "50"
+  },
+  {
+    "images": "/images/foods/f8.jpg",
+    "title": "Pizza",
+    "price": "50"
+  },
+  {
+    "images": "/images/foods/f8.jpg",
+    "title": "Pizza",
+    "price": "50"
+  },
+  {
+    "images": "/images/foods/f9.jpg",
+    "title": "Burger",
+    "price": "100"
+  }
+]
