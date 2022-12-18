@@ -1,15 +1,16 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import {BiSearch} from 'react-icons/bi';
 import {IoFastFoodSharp} from 'react-icons/io5';
 import {BsBag} from 'react-icons/bs';
 import {CgProfile} from 'react-icons/cg';
+import {IoIosArrowUp} from 'react-icons/io';
 import { useSelector,useDispatch } from 'react-redux';
-
-
 
 const Navbar = () => {
   const count = useSelector((state) => state.counter.value);
+  const [toggleSmallNav, setToggleSmallNav] = useState(false);
+  const toggleBoxclass = 'md:inline-block md:absolute xl:right-80 right-0  block mt-4 border-t-2 border-t-orange-500 shadow-gray-300 shadow-md bg-white rounded-[0.1rem] z-10 text-gray-700 ';
   console.log(count);
   return (
     <div className='p-4 shadow-lg px-6 font-semibold text-[1rem] bg-white text-black'>
@@ -27,23 +28,33 @@ const Navbar = () => {
             {/* Left */}
             <div className='flex text-gray-7m nbhyu
             00 space-x-5'>
-              <div className='flex space-x-2 items-center'>
+              <div className='flex hover:text-[#F4702B] space-x-2 items-center'>
                 <IoFastFoodSharp className='text-[1.2rem]' />
                 <Link href='' className='hidden md:inline-block'>Orders</Link>
               </div>
               {/* Cart */}
-              <div className='relative flex space-x-2 items-center'>
+              <div className='relative hover:text-[#F4702B] flex space-x-2 items-center'>
                 <p className='absolute text-orange-600 text-[1rem] font-bold top-[2px] left-3'>{count}</p>
                 <BsBag className='text-[1.2rem]' />
                 <Link href='' className='hidden md:inline-block'>Cart</Link>
               </div>
 
-              <div className='flex space-x-2 items-center'>
+              <div 
+               onClick={()=>setToggleSmallNav(!toggleSmallNav)} className='flex hover:text-[#F4702B] space-x-2 items-center'>
                 <CgProfile className='text-[1.2rem]' />
-                <Link href='' className='hidden md:inline-block'>Profile</Link>
+                <Link href='/' className='hidden md:inline-block'>Profile</Link>
               </div>
             </div>
-            {/* <Link href=''>Logo.</Link> */}
+        </div>
+        <div className={toggleSmallNav ? toggleBoxclass : 'hidden'}>
+          <IoIosArrowUp className='relative bg-white/[.06] border-b border-b-white 
+          mx-auto xl:ml-24 md:ml-28 -top-[14px] text-orange-500 text-[1.2rem]' />
+            <div className='flex py-6 md:text-[1rem] text-[0.9rem] px-7 pr-24 flex-col gap-5'>
+                <Link href='/Orders' className='hover:text-black font-semibold'>Orders</Link>
+                <Link href='/Cart' className='hover:text-black font-semibold'>Cart</Link>
+                <Link href='/favorites' className='hover:text-black font-semibold'>Favorites</Link>
+                <Link href='/api/auth/logout' className='hover:text-black font-semibold'>Logout</Link>
+            </div>
         </div>
         {/* Search Bar for mobile */}
         <div className='md:hidden border-gray-200 border shadow-sm mt-4 relative bg-[#ececec] rounded-[0.7rem] mr-1 p-1 flex-1 px-1 hover:shadow-xl flex items-center space-x-5'>
@@ -53,7 +64,7 @@ const Navbar = () => {
                 placeholder='Search for foods'
                 className='p-1 bg-[#ececec] text-gray-700 outline-none focus:border-0' 
                 />
-            </div>
+        </div>
     </div>
   )
 }

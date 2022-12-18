@@ -10,10 +10,9 @@ import SignUp from './SignUp';
 const Main = () => {
   return (
     <div>
-      
         <Navbar />
         <div className='md:h-[479px] h-[260px]'>
-          <Image className='object-fill h-full w-full' src={main} alt='' />
+          <Image className='priority object-fill h-full w-full' src={main} alt='' />
         </div>
         <WhatWeServe />
         <FoodsTap />
