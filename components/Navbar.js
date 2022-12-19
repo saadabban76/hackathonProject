@@ -8,10 +8,9 @@ import {IoIosArrowUp} from 'react-icons/io';
 import { useSelector,useDispatch } from 'react-redux';
 
 const Navbar = () => {
-  const count = useSelector((state) => state.counter.value);
+  const count = useSelector((state) => state.cart.cartCounter);
   const [toggleSmallNav, setToggleSmallNav] = useState(false);
   const toggleBoxclass = 'md:inline-block md:absolute xl:right-80 right-0  block mt-4 border-t-2 border-t-orange-500 shadow-gray-300 shadow-md bg-white rounded-[0.1rem] z-10 text-gray-700 ';
-  console.log(count);
   return (
     <div className='p-4 shadow-lg px-6 font-semibold text-[1rem] bg-white text-black'>
         {/* main */}

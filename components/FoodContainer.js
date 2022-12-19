@@ -1,11 +1,25 @@
+import { ExitToApp } from '@mui/icons-material';
 import Image from 'next/image'
-import React from 'react'
-import {  useDispatch } from 'react-redux'
+import React, { useState } from 'react'
+import {  useDispatch, useSelector } from 'react-redux'
 import { addToCart, removeFromCart } from '../slices/cartSlice';
-import {decrement, increment} from '../slices/cartCounter';
+import {decrement, increment} from '../slices/cartSlice';
 
 const FoodContainer = ({id, image, title, price}) => {
     const dispatch = useDispatch();
+    const cart = useSelector((state)=>state.cart.cart);
+    console.log("cart : ",cart);
+    // this invokes the removeFromBasket reducer only when the follwing item is present in the cart
+    let cartPresent= false;
+    const index = cart.findIndex((item)=> item.id == id);
+    console.log("index : ",index);
+    if(index>=0) {
+        cartPresent = true;
+    }else{
+        cartPresent = false;
+    }
+
+    console.log("cart Present ? : ", cartPresent);
 
     const addToBasket = () => {
         dispatch(increment());

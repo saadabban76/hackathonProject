@@ -1,4 +1,3 @@
-import { useUser } from '@auth0/nextjs-auth0/client'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
@@ -6,16 +5,6 @@ import Main from './Main'
 
 
 export default function Home() {
-  const {user,error,isLoading} = useUser();
-
-  if(!user) {
-    return (
-      <>
-      <h1>Please Log in</h1>
-      <a href='/api/auth/login'>Login</a>
-      </>
-    )
-  }else
   return (
     <div>
       <Head>

@@ -5,7 +5,6 @@ import FoodContainer from './FoodContainer';
 
 const FoodsTap = () => {
     const allFoods = useSelector((state)=>state.cart.allFoods);
-    allFoods.map(item=>console.log(item.id));
   return (
     <div className='bg-white container p-6 py-4'>
         {/* Foods Header */}
