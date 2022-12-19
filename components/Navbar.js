@@ -27,20 +27,20 @@ const Navbar = () => {
             {/* Left */}
             <div className='flex text-gray-7m nbhyu
             00 space-x-5'>
-              <div className='flex hover:text-[#F4702B] space-x-2 items-center'>
-                <IoFastFoodSharp className='text-[1.2rem]' />
+              <div className='flex cursor-pointer hover:text-[#F4702B] space-x-2 items-center'>
+                <IoFastFoodSharp className='text-[1.4rem]' />
                 <Link href='' className='hidden md:inline-block'>Orders</Link>
               </div>
               {/* Cart */}
-              <div className='relative hover:text-[#F4702B] flex space-x-2 items-center'>
-                <p className='absolute text-orange-600 text-[1rem] font-bold top-[2px] left-3'>{count}</p>
-                <BsBag className='text-[1.2rem]' />
+              <div className='relative cursor-pointer hover:text-[#F4702B] flex space-x-2 items-center'>
+                <p className='absolute text-orange-700 text-[0.9rem] font-bold top-[5px] left-4'>{count}</p>
+                <BsBag className='text-[1.6rem]' />
                 <Link href='' className='hidden md:inline-block'>Cart</Link>
               </div>
 
               <div 
-               onClick={()=>setToggleSmallNav(!toggleSmallNav)} className='flex hover:text-[#F4702B] space-x-2 items-center'>
-                <CgProfile className='text-[1.2rem]' />
+               onClick={()=>setToggleSmallNav(!toggleSmallNav)} className='flex cursor-pointer hover:text-[#F4702B] space-x-2 items-center'>
+                <CgProfile className='text-[1.4rem]' />
                 <Link href='/' className='hidden md:inline-block'>Profile</Link>
               </div>
             </div>

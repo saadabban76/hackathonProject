@@ -42,7 +42,7 @@ export const cartSlice = createSlice({
       }
 
       // updating the cart on removing the items 
-      if(state.cart[index].quantity<=0) {
+      if(state.cart[index]?.quantity<=0) {
         state.cart.splice(index,1);
       }
 

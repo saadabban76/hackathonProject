@@ -12,8 +12,7 @@ const FoodContainer = ({id, image, title, price}) => {
     // this invokes the removeFromBasket reducer only when the follwing item is present in the cart
     let cartPresent= false;
     const index = cart.findIndex((item)=> item.id == id);
-    console.log("index : ",index);
-    if(index>=0) {
+    if(cart[index]?.quantity > 0) {
         cartPresent = true;
     }else{
         cartPresent = false;
@@ -31,10 +30,16 @@ const FoodContainer = ({id, image, title, price}) => {
         dispatch(removeFromCart(id));
     }
 
+    const quantity = cart[index]?.quantity;
+
+
+    // Button Classes : 
+    const rmBtnClass = 'hover:scale-105 hover:shadow-lg  w-full rounded-l-[0.8rem] font-bold text-red-600 text-[1.3rem] text-center font-semibold ';
+    const addBtnClass = 'hover:scale-105 hover:shadow-lg  w-full rounded-r-[0.8rem] font-bold text-[1.2rem] text-center font-semibold text-green-600';
   return (
     <div className='py-4 md:max-w-[254px] text-black'>
         {/* Main */}
-        <div className='md:flex-col w-full max-h-[350px] hover:scale-105 hover:shadow-lg  
+        <div className='md:flex-col w-full max-h-[350px] hover:shadow-lg  
         cursor-pointer p-4 border border-gray-200 rounded-[1.1rem] justify-between flex gap-2'>
             {/* Food Image */}
             <div className=''>
@@ -54,40 +59,32 @@ const FoodContainer = ({id, image, title, price}) => {
                 </div>
                 {/* buttons */}
                 <div className='flex gap-3 flex-col md:flex-row'>
-                    <div className='bg-[#faecec] w-[70px] hover:scale-105 hover:shadow-lg border border-red-200 p-1 px-4 rounded-[0.8rem]'>
+                    <div className='bg-[#faecec] w-[70px] hover:scale-105
+                     hover:shadow-lg border border-red-200 p-1 px-4 rounded-[0.8rem]'>
                     <button 
                     className=' 
                     text-[0.9rem]
                     text-center font-semibold 
                     text-red-500'>Order</button>
                     </div>
-                    <div className='flex bg-[#f1ffef] rounded-[0.8rem] w-[70px]'>
-                    {/* Remove Button */}
-                    <button 
-                    onClick={removeFromBasket}
-                    className=' 
-                    hover:scale-105 
-                    hover:shadow-lg border border-red-200
-                    w-full
-                    rounded-l-[0.8rem]
-                    border-r
-                    bg-red-300 
-                    text-black
-                    text-[0.9rem]
-                    text-center font-semibold 
-                    '>-1</button>
-                    {/* Add Button */}
+                    <div className='flex items-center bg-[#ffffff]
+                     rounded-[0.6rem] border border-gray-100 shadow font-semibold text-green-500 w-[70px]'>
+                    {/* Same Add button */}
                     <button 
                     onClick={addToBasket}
-                    className='
-                    hover:scale-105 
-                    hover:shadow-lg border border-green-200
-                    w-full
-                    rounded-r-[0.8rem]
-                    bg-green-300 
-                    text-[0.9rem]
-                    text-center font-semibold 
-                    text-black'>+1</button>
+                    className={cartPresent ? 'hidden' : 'w-full h-full hover:shadow-md text-center'}>
+                        ADD
+                    </button>
+                    {/* Sub buttons */}
+                    <button 
+                    onClick={removeFromBasket}
+                    className={cartPresent ? rmBtnClass : 'hidden'}>-</button>
+                    {/* CartCounter */}
+                    <span className={cartPresent ? 'px-2 text-center' : 'hidden'}>{quantity}</span>
+                    {/* add button */}
+                    <button 
+                    onClick={addToBasket}
+                    className={cartPresent ? addBtnClass : 'hidden'}>+</button>
                     </div>                    
                 </div>
 
