@@ -1,10 +1,22 @@
 import Image from 'next/image'
 import React from 'react'
 import {  useDispatch } from 'react-redux'
-import { decrement, increment } from '../slices/example'
+import { addToCart, removeFromCart } from '../slices/cartSlice';
+import {decrement, increment} from '../slices/cartCounter';
 
-const FoodContainer = ({image, title, price}) => {
+const FoodContainer = ({id, image, title, price}) => {
     const dispatch = useDispatch();
+
+    const addToBasket = () => {
+        dispatch(increment());
+        dispatch(addToCart({id,image,title,price}));
+    };
+
+    const removeFromBasket = () => {
+        dispatch(decrement());
+        dispatch(removeFromCart(id));
+    }
+
   return (
     <div className='py-4 md:max-w-[254px] text-black'>
         {/* Main */}
@@ -35,16 +47,34 @@ const FoodContainer = ({image, title, price}) => {
                     text-center font-semibold 
                     text-red-500'>Order</button>
                     </div>
-                    <div className='bg-[#f1ffef] w-[70px] hover:scale-105 hover:shadow-lg border border-green-200 p-1 px-4 rounded-[0.8rem]'>
+                    <div className='flex bg-[#f1ffef] rounded-[0.8rem] w-[70px]'>
+                    {/* Remove Button */}
                     <button 
-                    onClick={()=> dispatch(increment())}
+                    onClick={removeFromBasket}
                     className=' 
+                    hover:scale-105 
+                    hover:shadow-lg border border-red-200
+                    w-full
+                    rounded-l-[0.8rem]
+                    border-r
+                    bg-red-300 
+                    text-black
                     text-[0.9rem]
                     text-center font-semibold 
-                    text-green-600'>Add</button>
-                    </div>
-
-                    
+                    '>-1</button>
+                    {/* Add Button */}
+                    <button 
+                    onClick={addToBasket}
+                    className='
+                    hover:scale-105 
+                    hover:shadow-lg border border-green-200
+                    w-full
+                    rounded-r-[0.8rem]
+                    bg-green-300 
+                    text-[0.9rem]
+                    text-center font-semibold 
+                    text-black'>+1</button>
+                    </div>                    
                 </div>
 
             </div>

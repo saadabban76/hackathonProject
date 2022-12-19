@@ -1,8 +1,11 @@
 import React from 'react';
-import foods from '../json/foods.json';
+import { useSelector } from 'react-redux';
+// import foods from '../json/foods.json';
 import FoodContainer from './FoodContainer';
 
 const FoodsTap = () => {
+    const allFoods = useSelector((state)=>state.cart.allFoods);
+    allFoods.map(item=>console.log(item.id));
   return (
     <div className='bg-white container p-6 py-4'>
         {/* Foods Header */}
@@ -11,12 +14,13 @@ const FoodsTap = () => {
         </div>
         {/* Foods Section */}
         <div className='py-8 flex flex-col md:grid md:grid-cols-3 xl:grid-cols-4'>
-            {foods.map((item,id)=> (
+            {allFoods.map((item)=> (
                 <FoodContainer 
-                    key={id}
-                    title={item.title}
-                    price={item.price}
-                    image={item.images}
+                    key={item?.id}
+                    id={item?.id}
+                    title={item?.title}
+                    price={item?.price}
+                    image={item?.images}
                 />
             ))}
         </div>
