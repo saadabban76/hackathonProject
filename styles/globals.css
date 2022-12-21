@@ -31,5 +31,6 @@ a {
   body {
     color: black;
     background: white;
+    -webkit-tap-highlight-color: transparent;
   }
 }

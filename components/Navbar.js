@@ -6,8 +6,12 @@ import {BsBag} from 'react-icons/bs';
 import {CgProfile} from 'react-icons/cg';
 import {IoIosArrowUp} from 'react-icons/io';
 import { useSelector,useDispatch } from 'react-redux';
+import Image from 'next/image';
+import navbar_logo from '../public/images/navbar_logo.png';
+import { useRouter } from 'next/router';
 
 const Navbar = () => {
+  let router = useRouter();
   const count = useSelector((state) => state.cart.cartCounter);
   const [toggleSmallNav, setToggleSmallNav] = useState(false);
   const toggleBoxclass = 'md:inline-block md:absolute xl:right-80 right-0  block mt-4 border-t-2 border-t-orange-500 shadow-gray-300 shadow-md bg-white rounded-[0.1rem] z-10 text-gray-700 ';
@@ -15,7 +19,12 @@ const Navbar = () => {
     <div className='p-4 shadow-lg px-6 font-semibold text-[1rem] bg-white text-black'>
         {/* main */}
         <div className='flex container items-center md:justify-between'>
-            <Link href='' className='flex-1 text-[1.2rem] text-orange-600'>Logo.</Link>
+            <Link href='' className='flex-1 text-[1.2rem] text-orange-600'>
+              <Image
+              className='w-[160px] xl:w-[180px]' 
+              src={navbar_logo} 
+              alt='Cec-Licioius' />
+            </Link>
             <div className='hidden relative rounded-[0.7rem] mr-2 p-2 flex-1 px-2 hover:shadow-xl md:flex items-center space-x-5'>
                 <BiSearch className='absolute text-[1.4rem] top-3.3 left-1' />
                 <input 
@@ -32,11 +41,15 @@ const Navbar = () => {
                 <Link href='' className='hidden md:inline-block'>Orders</Link>
               </div>
               {/* Cart */}
+       
+
+              <Link href='/Cart'>
               <div className='relative cursor-pointer hover:text-[#F4702B] flex space-x-2 items-center'>
                 <p className='absolute text-orange-700 text-[0.9rem] font-bold top-[5px] left-4'>{count}</p>
                 <BsBag className='text-[1.6rem]' />
-                <Link href='' className='hidden md:inline-block'>Cart</Link>
+                <p className='hidden md:inline-block'>Cart</p>
               </div>
+              </Link>
 
               <div 
                onClick={()=>setToggleSmallNav(!toggleSmallNav)} className='flex cursor-pointer hover:text-[#F4702B] space-x-2 items-center'>

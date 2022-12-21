@@ -20,64 +20,31 @@
   {
     "id": "04",
     "images": "/images/foods/f4.jpg",
-    "title": "jancia",
+    "title": "ice",
     "price": "10"
   },
   {
     "id": "05",
     "images": "/images/foods/f5.jpg",
-    "title": "KFC",
+    "title": "gobi",
     "price": "30"
   },
   {
     "id": "06",
     "images": "/images/foods/f6.jpg",
-    "title": "Kabab",
+    "title": "biryani",
     "price": "10"
   },
   {
     "id": "07",
     "images": "/images/foods/f7.jpg",
-    "title": "French Fries",
+    "title": "chicken",
     "price": "30"
-  },
-  {
-    "id": "08",
-    "images": "/images/foods/f8.jpg",
-    "title": "Pizza",
-    "price": "50"
   },
   {
     "id": "09",
     "images": "/images/foods/f8.jpg",
-    "title": "Pizza",
+    "title": "North Meals",
     "price": "50"
-  },
-  {
-    "id": "10",
-    "images": "/images/foods/f8.jpg",
-    "title": "Pizza",
-    "price": "50"
-  },
-  {
-    "id": "11",
-    "images": "/images/foods/f8.jpg",
-    "title": "Pizza",
-    "price": "50"
-  },
-  {
-    "images": "/images/foods/f8.jpg",
-    "title": "Pizza",
-    "price": "50"
-  },
-  {
-    "images": "/images/foods/f8.jpg",
-    "title": "Pizza",
-    "price": "50"
-  },
-  {
-    "images": "/images/foods/f9.jpg",
-    "title": "Burger",
-    "price": "100"
   }
 ]

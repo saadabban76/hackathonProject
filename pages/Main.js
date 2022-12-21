@@ -1,16 +1,15 @@
 import Image from 'next/image';
-import React from 'react'
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import FoodsTap from '../components/FoodsTap';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar'
 import WhatWeServe from '../components/WhatWeServe'
-import main from '../public/images/wwsMain.jpg';
+import main from '../public/images/wwsMain.png';
+import { cartTotal } from '../slices/cartSlice';
 import SignUp from './SignUp';
 
 const Main = () => {
-const cart = useSelector((state)=>state.cart.cart);
-console.log("cart : ",cart);
   return (
     <div>
         <Navbar />

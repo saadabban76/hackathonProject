@@ -1,14 +1,14 @@
 import { ExitToApp } from '@mui/icons-material';
 import Image from 'next/image'
+import Link from 'next/link';
 import React, { useState } from 'react'
 import {  useDispatch, useSelector } from 'react-redux'
-import { addToCart, removeFromCart } from '../slices/cartSlice';
+import { addItemsQuantity, addToCart, removeFromCart } from '../slices/cartSlice';
 import {decrement, increment} from '../slices/cartSlice';
 
 const FoodContainer = ({id, image, title, price}) => {
     const dispatch = useDispatch();
     const cart = useSelector((state)=>state.cart.cart);
-    console.log("cart : ",cart);
     // this invokes the removeFromBasket reducer only when the follwing item is present in the cart
     let cartPresent= false;
     const index = cart.findIndex((item)=> item.id == id);
@@ -18,12 +18,16 @@ const FoodContainer = ({id, image, title, price}) => {
         cartPresent = false;
     }
 
-    console.log("cart Present ? : ", cartPresent);
+    let q = 0;
 
     const addToBasket = () => {
+        q++;
+        dispatch(addItemsQuantity({id, q}));
         dispatch(increment());
         dispatch(addToCart({id,image,title,price}));
     };
+    console.log("q : ",q);
+
 
     const removeFromBasket = () => {
         dispatch(decrement());
@@ -58,8 +62,10 @@ const FoodContainer = ({id, image, title, price}) => {
                     <p className='text-[1.1rem]'>₹{price}</p>
                 </div>
                 {/* buttons */}
-                <div className='flex gap-3 flex-col md:flex-row'>
-                    <div className='bg-[#faecec] w-[70px] hover:scale-105
+                <div 
+                className='flex gap-3 flex-col md:flex-row'>
+                <Link href='/Cart'>
+                    <div onClick={addToBasket} className='bg-[#faecec] w-[70px] hover:scale-105
                      hover:shadow-lg border border-red-200 p-1 px-4 rounded-[0.8rem]'>
                     <button 
                     className=' 
@@ -67,6 +73,7 @@ const FoodContainer = ({id, image, title, price}) => {
                     text-center font-semibold 
                     text-red-500'>Order</button>
                     </div>
+                </Link>
                     <div className='flex items-center bg-[#ffffff]
                      rounded-[0.6rem] border border-gray-100 shadow font-semibold text-green-500 w-[70px]'>
                     {/* Same Add button */}
